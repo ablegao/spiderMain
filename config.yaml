@@ -1,0 +1,20 @@
+header:
+  User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36
+  cookie: showid=0; PHPSESSID=t8tqrnabpon34h3pb96m50ms22; a8477_times=1; __51cke__=; usersid=816199; username=13488828861; reg=1; __tins__19198477=%7B%22sid%22%3A%201517918933892%2C%20%22vd%22%3A%205%2C%20%22expires%22%3A%201517922341547%7D; __51laig__=5
+
+task:
+  -
+    input-type: GET
+    value: https://www.hao123.com/
+    find:
+      - a
+    output: html
+
+  - input-type: html
+    find:
+      - a
+    attr: href
+    output: text
+ 
+
+      
