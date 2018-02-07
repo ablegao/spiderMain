@@ -26,7 +26,6 @@ func main() {
 		task.SetConfigure(conf)
 		err = task.Exec(out)
 		if err != nil {
-
 			log.Println("ERROR", err)
 			return
 		}

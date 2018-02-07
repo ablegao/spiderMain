@@ -38,7 +38,6 @@ func (task ConfigureTask) SetConfigure(conf Configure) {
 	task.conf = conf
 }
 func (task ConfigureTask) Exec(buf *bytes.Buffer) error {
-
 	switch task.RunType {
 	case "get":
 		return task.RunnerHttpGet(buf)
@@ -49,8 +48,9 @@ func (task ConfigureTask) Exec(buf *bytes.Buffer) error {
 	case "each-download":
 		return task.RunnerEachDownload(buf)
 	case "each-html":
-
 		return task.RunnerEachHTML(buf)
+	case "stdout":
+		return task.RunnerStdout(buf)
 	}
 
 	return nil

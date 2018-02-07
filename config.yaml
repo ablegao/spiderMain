@@ -8,14 +8,15 @@ workflows:
     value: https://www.hao123.com
     out-type: html
   -
+    run: stdout
+  -
     run: html
     find:
       - a
     attr: href
-    
   -
-    run: write-to-file
-    out-path: ./url.log
+    run: stdout
     
+  
     
  

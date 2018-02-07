@@ -10,6 +10,7 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -173,5 +174,10 @@ func (task ConfigureTask) RunnerEachHTML(buf *bytes.Buffer) error {
 		buf.Write(linkOut.Bytes())
 		linkOut.Reset()
 	}
+	return nil
+}
+
+func (task ConfigureTask) RunnerStdout(buf *bytes.Buffer) error {
+	fmt.Println(buf.String())
 	return nil
 }
