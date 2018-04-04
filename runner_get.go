@@ -48,7 +48,7 @@ func (task ConfigureTask) RunnerHttpGet(buf *bytes.Buffer) error {
 	}
 }
 
-// HTML
+// HTML 匹配html 内容
 func (task ConfigureTask) RunnerHTML(buf *bytes.Buffer) error {
 
 	doc, err := goquery.NewDocumentFromReader(buf)
@@ -57,12 +57,12 @@ func (task ConfigureTask) RunnerHTML(buf *bytes.Buffer) error {
 	}
 
 	buf.Reset()
-	var sel *goquery.Selection
+	var sel *goquery.Selection = nil
 
-	for i, x := range task.Find {
-		if i == 0 {
+	for _, x := range task.Find {
+		// index 0 是第一个元素， 给sel 赋值
+		if sel == nil {
 			sel = doc.Find(x)
-
 		} else {
 			sel = sel.Find(x)
 		}
@@ -106,6 +106,7 @@ func (task ConfigureTask) RunnerWriteToFile(buf *bytes.Buffer) error {
 	}
 }
 
+// 遍历后下载， 将结果批量写入到 output-path
 func (task ConfigureTask) RunnerEachDownload(buf *bytes.Buffer) error {
 
 	scanner := bufio.NewReader(buf)
@@ -154,6 +155,7 @@ func (task ConfigureTask) RunnerEachDownload(buf *bytes.Buffer) error {
 
 }
 
+//
 func (task ConfigureTask) RunnerEachHTML(buf *bytes.Buffer) error {
 	in := bytes.NewBuffer(nil)
 	io.Copy(in, buf)
@@ -167,7 +169,6 @@ func (task ConfigureTask) RunnerEachHTML(buf *bytes.Buffer) error {
 		if e != nil {
 			break
 		}
-
 		task.Value = line
 		task.RunnerHttpGet(linkOut)
 		task.RunnerHTML(linkOut)

@@ -28,7 +28,7 @@ func Test_request(t *testing.T) {
 	var err error
 	for _, task := range conf.Task {
 		task.SetConfigure(conf)
-		out, err = task.Exec(out)
+		err = task.Exec(out)
 		if err != nil {
 			t.Error(err)
 		}

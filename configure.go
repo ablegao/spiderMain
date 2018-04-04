@@ -27,6 +27,7 @@ type ConfigureTask struct {
 	RunType    string            `yaml:"run"`
 	Value      string            `yaml:"value"`
 	Header     map[string]string `yaml:"header"`
+	Filter     map[string]string `yaml:"fitler"`
 	Find       []string          `yaml:"find"`
 	Attr       string            `yaml:"attr"`
 	Output     string            `yaml:"out-type"`
